@@ -1,11 +1,16 @@
-{
-    "manifest_version": 2,
-    "name": "Shadow DOM Highlighter",
+  
+  {
+    "manifest_version": 3,
+    "name": "Your Extension Name",
     "version": "1.0",
-    "browser_action": {
-      "default_title": "muffinsAi",
-      "default_icon": "favicon.ico",
-      "default_popup": "popup.html"
+    "description": "muffins",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "favicon.ico",
+        "48": "favicon.ico",
+        "128": "favicon.ico"
+      }
     },
     "permissions": ["activeTab"],
     "content_scripts": [
@@ -15,4 +20,3 @@
       }
     ]
   }
-  
