@@ -25,12 +25,15 @@ export default function Home() {
     <div className="container">
       <Head>
       <ul>
-        {highlightedElements.map((element, index) => (
-          <li key={index}>
-            {element}
-            <span onClick={() => handleDelete(index)}>&times;</span>
-          </li>
-        ))}
+        <li>
+          Home
+        </li>
+        <li>
+          Contact Us
+        </li>
+        <li>
+          About Us
+        </li>
       </ul>
       </Head>
 

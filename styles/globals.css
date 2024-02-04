@@ -33,3 +33,21 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+span {
+  cursor: pointer;
+}
