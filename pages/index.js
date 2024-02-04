@@ -23,7 +23,6 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Head>
       <ul>
         <li>
           Home
@@ -35,16 +34,12 @@ export default function Home() {
           About Us
         </li>
       </ul>
-      </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
       </main>
-
-      <Footer />
     </div>
   )
 }
