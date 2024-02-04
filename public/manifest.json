@@ -1,12 +1,8 @@
   {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "muffins",
     "version": "1.0",
-    "description": "Chrome Extension to highlight HTML elements in Shadow DOM",
-    "permissions": [
-      "activeTab",
-      "storage"
-    ],
+    "permissions": ["activeTab"],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
@@ -14,13 +10,11 @@
         "run_at": "document_end"
       }
     ],
-
     "background": {
-        "service_worker": "background.js"
-      },
+      "service_worker": "background.js"
+    },
     "browser_action": {
+      "default_popup": "popup.html",
       "default_icon": "favicon.ico",
-      "default_popup": "popup.html"
     }
   }
-  
