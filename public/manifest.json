@@ -1,25 +1,26 @@
+  
   {
     "manifest_version": 3,
-    "name": "muffins",
+    "name": "Your Extension Name",
     "version": "1.0",
-    "permissions": ["activeTab"],
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "browser_action": {
+    "description": "muffins",
+    "action": {
       "default_popup": "popup.html",
       "default_icon": {
         "16": "favicon.ico",
         "48": "favicon.ico",
         "128": "favicon.ico"
       }
-    }
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
   }
-  

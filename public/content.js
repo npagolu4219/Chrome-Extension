@@ -1,4 +1,4 @@
-const highlightElement = (element) => {
+const highlightElement = (element) => {debugger
     element.style.border = '2px solid green';
   
     element.addEventListener('click', () => {
@@ -6,7 +6,7 @@ const highlightElement = (element) => {
     });
   };
   
-  const traverseShadowDOM = (node) => {
+  const traverseShadowDOM = (node) => {debugger
     if (!node) return;
     if (node.shadowRoot) {
       const shadowRoot = node.shadowRoot;
