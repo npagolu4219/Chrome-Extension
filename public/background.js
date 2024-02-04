@@ -2,7 +2,7 @@
 
 const highlightedElements = [];
 
-chrome.runtime.onConnect.addListener((port) => {debugger
+chrome.runtime.onConnect.addListener((port) => {
   port.onMessage.addListener((msg) => {
     if (msg.action === 'highlightElement') {
       highlightedElements.push(msg.element);
@@ -11,7 +11,7 @@ chrome.runtime.onConnect.addListener((port) => {debugger
   });
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {debugger
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'deleteElement') {
     const index = highlightedElements.indexOf(request.element);
     if (index !== -1) {
