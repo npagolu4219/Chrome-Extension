@@ -1,15 +1,19 @@
-function highlightElement(element) {
+
+const highlightElement = (element) => {
     element.style.border = '2px solid green';
-    element.addEventListener('click', () => {
-      chrome.runtime.sendMessage({ action: 'addElement', element: element.outerHTML });
-    });
-  }
   
-  function traverseShadowDOM(node) {
+    element.addEventListener('click', () => {
+      chrome.extension.sendMessage({ action: 'highlightElement', element: element.outerHTML });
+    });
+  };
+  
+  const traverseShadowDOM = (node) => {
     if (!node) return;
+  
     if (node.shadowRoot) {
       const shadowRoot = node.shadowRoot;
       const elements = shadowRoot.querySelectorAll('*');
+  
       elements.forEach((element) => {
         highlightElement(element);
         traverseShadowDOM(element);
@@ -19,10 +23,19 @@ function highlightElement(element) {
         traverseShadowDOM(child);
       });
     }
-  }
-  
-  // Initial traversal and mutation observer
+  };
+  addEventListener('message', function(event) {
+    if (event.data && event.data.extensionMessage) {
+        alert(event.data.extensionMessage);
+    }
+});
+// Content script which injects the script:
+chrome.extension.onMessage.addListener(function(message) {
+    postMessage({extensionMessage: message}, '*');
+});
+
   traverseShadowDOM(document);
+  
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach((node) => {
@@ -30,5 +43,6 @@ function highlightElement(element) {
       });
     });
   });
+  
   observer.observe(document, { childList: true, subtree: true });
   
