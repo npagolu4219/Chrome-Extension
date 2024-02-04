@@ -1,0 +1,13 @@
+/* popup.css */
+
+  .highlighted-element {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .delete-icon {
+    cursor: pointer;
+  }
+  

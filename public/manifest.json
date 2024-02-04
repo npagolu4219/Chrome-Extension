@@ -12,15 +12,14 @@
         "128": "favicon.ico"
       }
     },
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+      "background": {
+        "service_worker": "background.js"
       },
     "permissions": ["activeTab"],
     "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
+        }
+      ]
   }
