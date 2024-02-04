@@ -1,4 +1,6 @@
-const highlightElement = (element) => {debugger
+// content.js
+
+const highlightElement = (element) => {
     element.style.border = '2px solid green';
   
     element.addEventListener('click', () => {
@@ -6,11 +8,13 @@ const highlightElement = (element) => {debugger
     });
   };
   
-  const traverseShadowDOM = (node) => {debugger
+  const traverseShadowDOM = (node) => {
     if (!node) return;
+  
     if (node.shadowRoot) {
       const shadowRoot = node.shadowRoot;
       const elements = shadowRoot.querySelectorAll('*');
+  
       elements.forEach((element) => {
         highlightElement(element);
         traverseShadowDOM(element);
@@ -22,17 +26,4 @@ const highlightElement = (element) => {debugger
     }
   };
   
-  // Initial traversal for the main page
   traverseShadowDOM(document);
-  
-  // Watch for mutations in the document and traverse Shadow DOMs as they are added dynamically
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        traverseShadowDOM(node);
-      });
-    });
-  });
-  
-  observer.observe(document, { childList: true, subtree: true });
-  
