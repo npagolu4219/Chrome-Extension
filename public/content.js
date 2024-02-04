@@ -29,13 +29,7 @@ const highlightElement = (element) => {
         alert(event.data.extensionMessage);
     }
 });
-// Content script which injects the script:
-chrome.extension.onMessage.addListener(function(message) {
-    postMessage({extensionMessage: message}, '*');
-});
-
   traverseShadowDOM(document);
-  
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach((node) => {
