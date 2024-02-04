@@ -1,13 +1,14 @@
+// content.js (for Manifest V3)
 
-const highlightElement = (element) => {
+const highlightElement = (element) => {debugger
     element.style.border = '2px solid green';
-  
     element.addEventListener('click', () => {
-      chrome.extension.sendMessage({ action: 'highlightElement', element: element.outerHTML });
+      const port = chrome.runtime.connect({ name: 'content-script' });
+      port.postMessage({ action: 'highlightElement', element: element.outerHTML });
     });
   };
   
-  const traverseShadowDOM = (node) => {
+  const traverseShadowDOM = (node) => {debugger
     if (!node) return;
   
     if (node.shadowRoot) {
@@ -24,13 +25,10 @@ const highlightElement = (element) => {
       });
     }
   };
-  addEventListener('message', function(event) {
-    if (event.data && event.data.extensionMessage) {
-        alert(event.data.extensionMessage);
-    }
-});
+  
   traverseShadowDOM(document);
-  const observer = new MutationObserver((mutations) => {
+  
+  const observer = new MutationObserver((mutations) => {debugger
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach((node) => {
         traverseShadowDOM(node);
@@ -38,5 +36,5 @@ const highlightElement = (element) => {
     });
   });
   
-  observer.observe(document, { childList: true, subtree: true });
+  chrome.runtime.sendMessage({  childList: true, subtree: true  });
   

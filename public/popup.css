@@ -1,5 +1,11 @@
 /* popup.css */
 
+body {
+    width: 200px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
   .highlighted-element {
     margin-bottom: 10px;
     display: flex;

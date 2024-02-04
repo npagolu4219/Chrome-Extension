@@ -1,6 +1,6 @@
 // popup.js
 
-const updateList = (elements) => {
+const updateList = (elements) => {debugger
     const container = document.getElementById('highlightedElements');
     container.innerHTML = '';
   

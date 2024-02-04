@@ -1,14 +1,17 @@
+// background.js (for Manifest V3)
 
 const highlightedElements = [];
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'highlightElement') {
-    highlightedElements.push(request.element);
-    chrome.runtime.sendMessage({ action: 'updateList', elements: highlightedElements });
-  }
+chrome.runtime.onConnect.addListener((port) => {debugger
+  port.onMessage.addListener((msg) => {
+    if (msg.action === 'highlightElement') {
+      highlightedElements.push(msg.element);
+      chrome.runtime.sendMessage({ action: 'updateList', elements: highlightedElements });
+    }
+  });
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {debugger
   if (request.action === 'deleteElement') {
     const index = highlightedElements.indexOf(request.element);
     if (index !== -1) {
